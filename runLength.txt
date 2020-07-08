@@ -1,0 +1,43 @@
+/*
+
+loop through each character
+track the state of the program, specicially track the char and the total
+
+*/
+
+function repeatChar(num, char) {
+    let result = '';
+
+    for (let i = 0; i < num; i++) {
+        result+= char;
+    }
+
+    return result;
+}
+
+function encode(targetString) {
+    if (typeof targetString !== 'string') {
+        return '';
+    } else {
+        const state = { char: targetString[0], total: 1, output: [] };
+
+        for (let i = 1; i <= targetString.length; i++) {
+            const currentChar = targetString[i];
+            if (state.char === currentChar) {
+                state.total++;
+            } else {
+                state.output.push(state.total > 2 ? `${state.total}${state.char}` : repeatChar(state.total, state.char));
+                state.total = 1;
+            }
+
+            state.char = currentChar;
+        }
+
+        return state.output.join('');
+    }
+}
+
+console.log(encode('aaaabbc'))
+console.log(encode(null));
+console.log(encode(''))
+console.log(encode('aaaabbc'))

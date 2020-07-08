@@ -1,0 +1,21 @@
+/*
+
+get the last character in the string
+place the first character in the string last
+place the saved character first in the string
+
+*/
+
+function reverse(target) {
+    const asArray = target.split('');
+
+    for (let i = 0; i < asArray.length / 2; i++) {
+        const ithChar = asArray[i];
+        asArray[i] = asArray[asArray.length - i - 1];
+        asArray[asArray.length - i - 1] = ithChar;
+    }
+
+    return asArray.join('');
+}
+
+console.log(reverse('batman'))

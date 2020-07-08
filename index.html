@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .sub {
+        display: none;
+      }
+
+      .has-sub:hover + .sub {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <li><a href="">Thing</a></li>
+      <li><a href="">Thing 1</a></li>
+      <li><a href="">Thing 2</a></li>
+      <li>
+        <a href="" class="has-sub">Thing 3</a>
+        <ul class="sub">
+          <li>Sub thing 1</li>
+          <li>Sub thing 2</li>
+          <li>Sub thing 3</li>
+        </ul>
+      </li>
+      <li><a href="">Thing 4</a></li>
+      <li><a href="">Thing 5</a></li>
+    </nav>
+  </body>
+</html>
