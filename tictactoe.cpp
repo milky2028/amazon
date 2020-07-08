@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <time.h>
 
-#include <array>
 #include <iostream>
 #include <memory>
 #include <string>
+#include <vector>
 
 class Board {
  private:
-  std::array<std::array<std::string, 3>, 3> base_state = {
-      {{"", "", ""}, {"", "", ""}, {"", "", ""}}};
+  std::vector<std::vector<std::string>> base_state = {
+      {{"x", "", ""}, {"", "", ""}, {"", "", "o"}}};
 
-  std::array<std::string, 2> possible_players = {"x", "o"};
+  std::vector<std::string> possible_players = {"x", "o"};
   std::string current_player = "";
-  std::array<std::array<std::string, 3>, 3> game_state = {};
+  std::vector<std::vector<std::string>> game_state = {};
 
   void reset_game_state() { game_state = base_state; }
 
@@ -22,10 +22,23 @@ class Board {
     current_player = possible_players[random_index];
   }
 
+  void draw() {
+    for (auto& row : game_state) {
+      for (size_t i = 0; i < row.size(); i++) {
+        auto pos = row[i];
+        printf("| %s ", pos.length() == 1 ? pos.c_str() : " ");
+        if (i == row.size() - 1) {
+          printf("|\n");
+        }
+      }
+    }
+  }
+
  public:
   Board() {
     reset_game_state();
     choose_random_player();
+    draw();
   }
 };
 
